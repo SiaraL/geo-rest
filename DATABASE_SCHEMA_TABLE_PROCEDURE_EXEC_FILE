@@ -1,0 +1,38 @@
+-- SQL SERVER
+create database GeoLocation;
+
+use GeoLocation;
+
+create table LocalInfo(
+	id bigint not null primary key identity(1,1),
+	device varchar(20),
+	latitude float,
+	longitude float,
+	date datetime
+)
+
+create procedure dbo.AddLocalInfo
+	@device varchar(20),
+	@latitude varchar(20),
+	@longitude varchar(20),
+	@date datetime
+as
+begin 
+	
+	insert into dbo.LocalInfo 
+		values(@device, @latitude, @longitude, @date)
+
+	return 
+
+end 
+
+create procedure dbo.GetLocalInfo
+	
+as 
+begin
+
+	select * from dbo.LocalInfo
+
+	return
+
+end
